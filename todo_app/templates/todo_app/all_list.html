@@ -1,0 +1,14 @@
+{% extends "base.html" %}{% block content %}
+<h2>My List</h2>
+<ul>
+    {% for list in list_list %}
+
+    <li class="list1">
+        <a href="{% url 'list-task' list.pk %}"> {{list.title}}</a>
+    </li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'list-create' %}" role="button">
+    ✨ Create New Lst
+    </a> {% endblock %}

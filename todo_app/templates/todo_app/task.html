@@ -1,0 +1,37 @@
+ {% extends "base.html" %} {% block content %}
+<div class="contaner">
+    <h3>{{ task.title | upper}} Task</h3>
+    <hr>
+    <table>
+        <tr>
+            <th> List </th>
+            <td> {{task.list}}</td>
+        </tr>
+        <tr>
+            <th> Title </th>
+            <td> {{task.title}}</td>
+        </tr>
+        <tr>
+            <th> Description </th>
+            <td> {{task.description}}</td>
+        </tr>
+        <tr>
+            <th> Due Date </th>
+            <td> {{task.due_date}}</td>
+
+        </tr>
+    </table>
+    <hr>
+    <p style="margin-top: 35px;">
+        <a href="{% url 'task-edit' list.pk task.pk %}" role="button" style="margin-top: 15px;">
+        ✨ Edit the Task
+        </a>
+        <a href="{% url 'task-delete' list.id  task.pk %}" role="button" style="margin-top: 15px; margin-left: 20px;">
+            ❌ Delete the Task
+            </a>
+    </p>
+    <p style="margin-top: 25px;"><a href="{% url 'list-task' list.id %}" style="margin-bottom:60px;">
+        Back
+        </a></p>
+</div>
+{% endblock %}

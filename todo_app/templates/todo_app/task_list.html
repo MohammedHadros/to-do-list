@@ -1,0 +1,31 @@
+{% extends "base.html" %} {% block content %}
+<h2>{{List | upper}} Tasks </h2>
+<ul>
+    {% for task in object_list %}
+    <div class="task">
+        <h3>{{task.title}}</h3>
+        <p>Due Date : {{task.due_date}} </p>
+
+        <a href="{% url 'task-details' List.pk  task.pk %}" class="detailsLink"> see Details</a>
+    </div>
+
+
+    {% endfor %}
+</ul>
+<p style="margin-top: 35px;margin-left: 50px;">
+    <a href="{% url 'task-add' List.pk %}" role="button" style="margin-top: 15px;">
+    ✨ Add more Tasks
+    </a>
+</p>
+<p style="margin-top: 35px;margin-left: 50px;">
+    <a href="{% url 'list-update' List.id  %}" role="button" style="margin-top: 15px;">
+    ✨ Edit the List Title
+    </a>
+    <a href="{% url 'list-delete'  List.pk %}" role="button" style="margin-top: 15px; margin-left: 20px;">
+        ❌ Delete the List
+        </a>
+</p>
+<p style="margin-top: 25px;margin-left: 50px;"><a href="{% url 'all_list' %}" style="margin-bottom:60px;">
+    Back
+    </a></p>
+{% endblock %}
